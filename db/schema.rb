@@ -10,9 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_02_05_193640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "buildings", force: :cascade do |t|
+    t.string "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "flats", force: :cascade do |t|
+    t.string "addressid"
+    t.string "number"
+    t.float "area"
+    t.string "area_unit", default: "m2"
+    t.integer "floor_number"
+    t.integer "room_count"
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "PLN", null: false
+    t.string "concept_url"
+    t.bigint "building_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_flats_on_building_id"
+  end
 
 end
