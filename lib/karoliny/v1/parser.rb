@@ -53,10 +53,12 @@ module Karoliny
       end
 
       def parse_field(col, header)
-        return col.text unless header == :concept_url
+        return col.css('a').attribute('href').value if header == :concept_url
 
+        value = col.text
+        return Monetize.parse(value) if header == :price
 
-        col.css('a').attribute('href').value
+        value
       end
 
       def parsed_headers(headers_row)

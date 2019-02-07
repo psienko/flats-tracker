@@ -8,7 +8,7 @@ module Karoliny
         attribute :floor_number, ::Types::Coercible::String
         attribute :room_count,   ::Types::Coercible::Integer
         attribute :status,       ::Types::Coercible::String
-        attribute :price,        ::Types::Coercible::String
+        attribute :price,        ::Types.Constructor(Money)
         attribute :concept_url,  ::Types::Coercible::String
       end
     end
