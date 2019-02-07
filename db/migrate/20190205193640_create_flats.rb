@@ -8,6 +8,7 @@ class CreateFlats < ActiveRecord::Migration[6.0]
       t.integer :floor_number
       t.integer :room_count
       t.monetize :price
+      t.string :status
       t.string :concept_url
       t.references :building
 

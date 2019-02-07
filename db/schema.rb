@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_193640) do
     t.integer "room_count"
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "PLN", null: false
+    t.string "status"
     t.string "concept_url"
     t.bigint "building_id"
     t.datetime "created_at", null: false
