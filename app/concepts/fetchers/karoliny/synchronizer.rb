@@ -1,13 +1,19 @@
 module Fetchers
   module Karoliny
     class Synchronizer
-      PROVIDER = 'osiedle karoliny'
+      PROVIDER = 'osiedle_karoliny'
 
       def self.call(args); new.call(args); end
 
+      def initialize(
+        building_not_found_resolver: ::Fetchers::Resolvers::BuildingNotFoundResolver
+      )
+        @building_not_found_resolver = building_not_found_resolver
+      end
+
       def call(building_entity)
         building = building(building_entity)
-        synchronize_flats(building, building_entity.flats)
+        synchronize_flats(building, building_entity)
       end
 
       private
@@ -16,15 +22,20 @@ module Fetchers
         Building.find_or_initialize_by(provider: PROVIDER, number: building_entity.number)
       end
 
-      def synchronize_flats(building, flats)
-        ActiveRecord::Base.transaction do
+      def synchronize_flats(building, building_entity)
           if building.persisted?
             # TODO
           else
-            building.flats = flats.map { |flat_entity| Flat.new(flat_entity.to_h) }
-            building.save
+            resolve_not_found_building(building, building_entity)
           end 
-        end
+      end
+
+      def resolve_not_found_building(building, building_entity)
+        @building_not_found_resolver.call(
+          building:building,
+          building_entity: building_entity,
+          provider: PROVIDER
+        )
       end
     end
   end
