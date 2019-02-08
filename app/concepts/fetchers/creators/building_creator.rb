@@ -3,6 +3,7 @@ module Fetchers
     class BuildingCreator < Service
       Error = Class.new(BaseError)
 
+      # TODO Implement Event Sourcing
       def call(building:)
         building.save!
       rescue StandardError => e

@@ -1,8 +1,6 @@
 module Fetchers
   module Resolvers
-    class BuildingNotFoundResolver
-      def self.call(**args); new.call(**args); end
-
+    class BuildingNotFoundResolver < Service
       def initialize(
         building_creator:      ::Fetchers::Creators::BuildingCreator,
         flat_creator:          ::Fetchers::Creators::FlatCreator,

@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_02_07_194336) do
     t.string "number"
     t.float "area"
     t.string "area_unit", default: "m2"
-    t.integer "floor_number"
+    t.string "floor_number"
     t.integer "room_count"
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "PLN", null: false

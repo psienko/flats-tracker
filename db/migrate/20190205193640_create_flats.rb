@@ -5,7 +5,7 @@ class CreateFlats < ActiveRecord::Migration[6.0]
       t.string :number
       t.float :area
       t.string :area_unit, default: 'm2'
-      t.integer :floor_number
+      t.string :floor_number
       t.integer :room_count
       t.monetize :price
       t.string :status

@@ -7,6 +7,7 @@ module Fetchers
         @addressid_generator = addressid_generator
       end
 
+      # TODO Implement Event Sourcing
       def call(building:, flat_entity:, provider:)
         flat_args = flat_args(building, flat_entity, provider)
         Flat.create!(flat_args)
