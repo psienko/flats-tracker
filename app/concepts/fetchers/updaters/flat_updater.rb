@@ -37,7 +37,7 @@ module Fetchers
           provider: building.provider
         )
       rescue @flat_create_error => e
-        raise CreateError, e
+        raise CreateError, e.message
       end
 
       def update(flat, flat_entity)
@@ -48,7 +48,7 @@ module Fetchers
         flat.save!
         flat
       rescue StandardError => e
-        raise UpdateError.new(e, flat: flat, attrs: attrs)
+        raise UpdateError.new(e.message, flat: flat, attrs: attrs)
       end
     end
   end

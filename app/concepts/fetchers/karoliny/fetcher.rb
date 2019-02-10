@@ -1,8 +1,6 @@
 module Fetchers
   module Karoliny
-    class Fetcher
-      def self.call; new.call; end
-
+    class Fetcher < Service
       def initialize(
         client:       ::Karoliny::V1::Client,
         synchronizer: ::Fetchers::Karoliny::Synchronizer

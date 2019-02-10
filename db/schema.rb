@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_07_194336) do
+ActiveRecord::Schema.define(version: 2019_02_10_130352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activity_logs", force: :cascade do |t|
+    t.string "activitable_type"
+    t.bigint "activitable_id"
+    t.string "event_type"
+    t.text "event_log"
+    t.string "event_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activitable_type", "activitable_id"], name: "index_activity_logs_on_activitable_type_and_activitable_id"
+  end
 
   create_table "buildings", force: :cascade do |t|
     t.string "number"
