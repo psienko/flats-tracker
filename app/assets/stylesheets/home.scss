@@ -1,0 +1,28 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+th, td {
+  padding: 5px 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+thead td {
+  font-weight: bold;
+}
+
+.home-activity {
+  &-small{
+    color: red;
+    font-size: 8pt;
+    text-decoration: 'italic';
+  }
+
+  &-id {
+    font-weight: bolder;
+  }
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+
