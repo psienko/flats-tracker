@@ -42,8 +42,9 @@ module Fetchers
 
       def update(flat, flat_entity)
         attrs = flat_entity.to_h
-        # We don't want to remove previously saved url
+        # We don't want to remove previously saved url and price
         attrs.delete :concept_url if attrs[:concept_url].blank? 
+        attrs.delete :price if flat.price && (attrs[:price].zero? || attrs[:price].blank?) 
         flat.assign_attributes(attrs)
         return flat unless flat.changed?
 
