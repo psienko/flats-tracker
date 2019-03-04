@@ -5,4 +5,10 @@ namespace :flats_sync do
     Fetchers::Karoliny::Fetcher.call
     puts "Fetched successfuly from karoliny.pl"
   end
+
+  task fetch_adma: :environment do
+    puts 'Fetching from admadevelopment.pl'
+    Fetchers::Karoliny::Fetcher.call
+    puts "Fetched successfuly from admadevelopment.pl"
+  end
 end
