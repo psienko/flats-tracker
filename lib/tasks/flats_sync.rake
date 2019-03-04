@@ -8,7 +8,7 @@ namespace :flats_sync do
 
   task fetch_adma: :environment do
     puts 'Fetching from admadevelopment.pl'
-    Fetchers::Karoliny::Fetcher.call
+    Fetchers::Adma::Fetcher.call
     puts "Fetched successfuly from admadevelopment.pl"
   end
 end
